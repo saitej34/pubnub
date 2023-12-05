@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import JoinRoomForm from './components/JoinRoomForm';
+import JoinOther from './components/JoinOther';
+import Room from './components/Room';
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route exact path="/" element={<JoinRoomForm />} />
+      <Route path="/room/:roomid" element={<Room />} />
+      <Route path="/room/join/:roomid" element={<JoinOther />} />
+    </Routes>
+  </BrowserRouter>
   );
-}
+};
 
 export default App;
